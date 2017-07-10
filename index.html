@@ -5,6 +5,7 @@
 <script src="jquery-3.2.1.slim.min.js"></script>
 <script src="jquery.simpleWeather.min.js"></script>
 <style>
+
   body{
   background-color:#0091c2;
 }
@@ -266,8 +267,7 @@ header p:hover{
     
   </div>
   
-  <button class="geolocation" id="nohome">Use Your Location</button>
-  
+
   <div id=main>
     <p id="kude"></p>
     <button id="makehome" style="display:none;" onclick="makehome()">&#8962;<span class="tooltiptext">Set as home city</span></button>
@@ -308,36 +308,17 @@ function funky(k) {
     woeid: "",
     unit: "c",
     success: function(weather) {
-      if (arr.slice(0, 5).indexOf(weather.city) == -1) {
-        arr.unshift(weather.city);
-        arr = arr.slice(0, 5);
-      }
-      document.getElementById("makehome").style.opacity = 1;
-      $(".tooltiptext").css("opacity",1);
-      document.getElementById("makehome").disabled = false;
-      if (weather.city === homecity) {
-        document.getElementById("makehome").style.opacity = 0.2;
- document.getElementById("makehome").disabled = true;
-        $(".tooltiptext").css("opacity",0);
-      }
-      for (k = 5; k < 10; k++) {
-        document.getElementById(k).innerHTML = arr[k - 5];
-      }
+      
+     
+
+      
       document.getElementById("kude").innerHTML =
         weather.city + ", " + weather.country;
-      $("#makehome").show();
       document.getElementById("temp").innerHTML = weather.temp + "&deg";
       document.getElementById("kak").innerHTML = weather.currently;
-      document.getElementById("im").src = weather.image;
-      document.getElementById("past").style.opacity = 1;
-      for (var i = 1; i < 5; i++) {
-        document.getElementById(i).innerHTML =
-          weather.forecast[i].day +
-          "<span class='ulevo'>" +
-          weather.forecast[i].high +
-          "&deg" +
-          "</span>";
-      }
+     
+     
+
 
     },
     error: function(error) {
@@ -352,10 +333,7 @@ $("#searchbar").submit(function(e) {
   return false;
 });
 
-for (k = 5; k < 10; k++) {
-  //update recent cities
-  document.getElementById(k).innerHTML = arr[k - 5];
-}
+
 
 
 

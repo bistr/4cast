@@ -4,37 +4,426 @@
 
 <script src="jquery-3.2.1.slim.min.js"></script>
 <script src="jquery.simpleWeather.min.js"></script>
+<style>
+  body{
+  background-color:#0091c2;
+}
+
+header {
+  background: -webkit-linear-gradient(0deg, rgba(255,255,255,0.5) 0%, rgba(0,145,194,0) 100%);
+  padding:0 0 0 30px;
+  margin:-70px 0 0 -10px;
+  font-size:70px;
+  color:white;
+}
+
+#search{
+  float:right;
+  background:rgba(255,255,255,0.5);
+  padding:30px 10px;
+  position:relative;
+  top:-70px;
+  left:8px;
+ 
+}
+
+#woe{
+  padding:10px;
+  width:220px;
+  margin:10px;
+  font-size:20px;
+  border-radius:5px;
+}
+
+#try{
+  padding:5px 10px;
+  color:white;
+  background:#00698C;
+  font-size:20px;
+  border-radius:5px;
+  position:relative;
+  top:-55px;
+  cursor:pointer;
+  left:270px;
+  font-family:"Oswald"
+}
+
+#main{
+  color:white;
+  position:relative;
+  width:1000px;
+  left:680px;
+  top:-70px;
+
+}
+
+#im{
+  width:900px;
+  position:absolute;
+  top:50px;
+  left:-100px;
+}
+
+#kude{
+  font-size:50px;
+  position:absolute;
+  top:-45px;
+  left:-600px;
+  
+}
+
+#temp{
+  font-size:90px;
+  position:absolute;
+  left:350px;
+  top:-50px;
+}
+
+#kak{
+  width:600px;
+  position:absolute;
+  top:470px;
+  left:-150px;
+  font-size:45px;
+  text-align:center;
+}
+
+#past div{
+  width:300px;
+  padding:0 10px;
+  font-size:30px;
+  color:white;
+  background:rgba(255,255,255,0.5);
+  margin:20px;
+  text-align:left;
+}
+
+#past{
+  display:inline-block;
+  position:relative;
+  top:40px;
+  left:10px;
+}
+
+.ulevo{
+  float:right;
+}
+
+#search div {
+  width:300px;
+  padding:0 10px;
+  font-size:30px;
+  color:white;
+  background:#0091c2;
+  margin:20px;
+  text-align:left;
+  position:relative;
+  top:-90px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow: 2px 2px 5px #00749C;
+}
+
+#tit{
+  font-size:40px;
+  top:-80px;
+  left:10px;
+  position:relative;
+  color:white;
+}
+
+#search div:hover{
+  background-color:#007EA8;
+}
+
+#search div:active{
+  box-shadow: 0px 0px 5px #888888;
+}
+
+.geolocation{
+  width:300px;
+  padding:0 10px;
+  font-size:30px;
+  color:white;
+  background:#00698C;
+  margin:20px;
+  text-align:left;
+  text-align:center;
+  cursor:pointer;
+  box-shadow: 2px 2px 5px #00749C;
+
+  
+  
+}
+
+#nohome{
+  position:relative;
+  left:600px;
+  top:200px;
+}
+
+#vinagi{
+  left:20px;
+  position:relative;
+  left:10px;
+}
+
+#makehome{
+  border:none;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  font-size:60px;
+  position:absolute;
+  top:15px;
+  left:-670px;
+  padding:0 5px 0px 7px;
+  border-radius:5px;
+  box-shadow: 5px 5px 5px #00749C;
+  text-decoration: none;
+  outline: none;
+  
 
 
-</head>
-<body>
-<button class="geolocation">USE YOUR LOCATION</button>
-<h1 id="hello">yeah</h1>
-<script>
+}
 
-$('.geolocation').on('click', function() {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    loadWeather(position.coords.latitude+','+position.coords.longitude); //load weather using your lat/lng coordinates
-  });
-});
+#makehome:hover{
+  background:rgba(0,0,0,0.6);
+}
 
+#makehome:active{
+  box-shadow: 0px 0px 5px #00749C;
+}
 
-function loadWeather(location,woeid){
-  $.simpleWeather({
-    location:location,
-    woeid:woeid,
-    unit:'c',
-    success:function(weather){
-      $("#hello").html(weather.high+" "+ weather.currently +" "+weather.city);
-    },
-    error:function(error){
-    $("#hello").html("error");
-  }
-  });
+.tooltiptext{
+  visibility: hidden;
+    ;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 3px;
+    border-radius: 6px;
+    width: 180px;
+    top: 115%;
+    left: 90%; 
+    margin-left: -60px;
+    /* Position the tooltip text - see examples below! */  font-size:20px;
+    position: absolute;
+    z-index: 1;
+}
+
+#makehome:hover .tooltiptext{
+  visibility: visible;
+}
+
+.tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 22%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
 }
 
 
 
-</script>
-</body>
+header p:hover{
+ animation-name:example;
+  animation-duration:0.5s;
+  animation-iteration-count: infinite;
+  
+}
+
+@keyframes example {
+  0%  {text-shadow: 0px 0px 0px white;}
+  50%  {text-shadow: 0px 0px 5px white;}
+  100% {text-shadow: 0px 0px 0px white;}
+}
+  </style>
+
+</head>
+<body>
+  <header>
+    <p> 4Cast </p>
+  </header>
+
+  <div id=search>
+    <form id=searchbar>
+    <input type="text" placeholder="Search for city ... " name="woe" id="woe" value="">
+    
+   </form>
+  <button id=try onclick="funky(x.elements[0].value)">Search</button>
+
+    <p id=tit> Recent Cities </p>
+    <div id=5 onclick="funky(arr[0])"></div>
+   <div id=6 onclick="funky(arr[1])"></div>
+   <div id=7 onclick="funky(arr[2])"></div>
+   <div id=8 onclick="funky(arr[3])"></div>
+   <div id=9 onclick="funky(arr[4])"></div>
+    <button class="geolocation" id="vinagi">Use Your Location</button>
+
+    
+  </div>
+  
+  <button class="geolocation" id="nohome">Use Your Location</button>
+  
+  <div id=main>
+    <p id="kude"></p>
+    <button id="makehome" style="display:none;" onclick="makehome()">&#8962;<span class="tooltiptext">Set as home city</span></button>
+    <p id="temp"></p>
+    <p id="kak"></p>
+    <img id="im"/>
+  </div>
+   <div id=past>
+   <div id=1></div>
+   <div id=2></div>
+   <div id=3></div>
+   <div id=4></div>
+  </div>
+<script>
+  var grad = 0,
+  x = document.getElementById("searchbar"),
+  k,
+  homecity = "nqma",
+  arr = ["Burgas", "Varna", "Ruse", "Sofia", "Vidin"];
+
+document.body.onkeydown = function(event) {
+  event = event || window.event;
+  var keycode = event.charCode || event.keyCode;
+  if (keycode === 13) {
+    //on down arrow
+    funky(x.elements[0].value);
+  }
+};
+
+function funky(k) {
+  $("#nohome").hide();
+  grad = k;
+  grad = grad.charAt(0).toUpperCase() + grad.slice(1).toLowerCase();
+  x.reset();
+
+  $.simpleWeather({
+    location: grad,
+    woeid: "",
+    unit: "c",
+    success: function(weather) {
+      if (arr.slice(0, 5).indexOf(weather.city) == -1) {
+        arr.unshift(weather.city);
+        arr = arr.slice(0, 5);
+      }
+      document.getElementById("makehome").style.opacity = 1;
+      $(".tooltiptext").css("opacity",1);
+      document.getElementById("makehome").disabled = false;
+      if (weather.city === homecity) {
+        document.getElementById("makehome").style.opacity = 0.2;
+ document.getElementById("makehome").disabled = true;
+        $(".tooltiptext").css("opacity",0);
+      }
+      for (k = 5; k < 10; k++) {
+        document.getElementById(k).innerHTML = arr[k - 5];
+      }
+      document.getElementById("kude").innerHTML =
+        weather.city + ", " + weather.country;
+      $("#makehome").show();
+      document.getElementById("temp").innerHTML = weather.temp + "&deg";
+      document.getElementById("kak").innerHTML = weather.currently;
+      document.getElementById("im").src = weather.image;
+      document.getElementById("past").style.opacity = 1;
+      for (var i = 1; i < 5; i++) {
+        document.getElementById(i).innerHTML =
+          weather.forecast[i].day +
+          "<span class='ulevo'>" +
+          weather.forecast[i].high +
+          "&deg" +
+          "</span>";
+      }
+      setCookie("bisi", [arr, homecity], 7);
+    },
+    error: function(error) {
+      document.getElementById("kude").innerHTML = "You fucked up";
+    }
+  });
+}
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + String(cvalue) + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  var oldcookies = getCookie("bisi").split(",");
+  if (getCookie("bisi")) {
+    for (k = 0; k < 5; k++) {
+      arr[k] = oldcookies[k];
+      if (oldcookies.length > 5) {
+        homecity = oldcookies[5];
+      }
+    }
+  }
+}
+
+function makehome() {
+  //set city as home
+  homecity = document.getElementById("kude").innerHTML.split(",")[0];
+  setCookie("bisi", [arr, homecity], 7);
+  document.getElementById("makehome").style.opacity = 0.2;
+  document.getElementById("makehome").disabled =True;
+  $(".tooltiptext").css("opacity",0);
+  
+}
+
+$("#searchbar").submit(function(e) {
+  return false;
+});
+
+checkCookie();
+
+for (k = 5; k < 10; k++) {
+  //update recent cities
+  document.getElementById(k).innerHTML = arr[k - 5];
+}
+
+if (homecity == "nqma") {
+  //dvata geolocatora
+  if ("geolocation" in navigator) {
+    $("#nohome").show();
+    $("#vinagi").hide();
+  } else {
+    $("#nohome").hide();
+    $("#vinagi").show();
+  }
+} else {
+  funky(homecity);
+}
+
+$(".geolocation").on("click", function() {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    funky(position.coords.latitude + "," + position.coords.longitude);
+
+    $("#vinagi").show();
+
+    //load weather using your lat/lng coordinates
+  });
+});
+  
+  </script>
+  </body>
 </html>

@@ -17,7 +17,7 @@
         Bistra Chilikova
     </author>
 
-         <plugin name="cordova-plugin-whitelist" source=npm/>
+         <plugin name="cordova-plugin-whitelist" />
 
      <icon src="icon.png" />       
         

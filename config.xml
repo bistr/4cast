@@ -17,6 +17,7 @@
         Bistra Chilikova
     </author>
 
+         <gap:plugin name=cordova-plugin-whitelist source=npm>
 
      <icon src="icon.png" />       
         

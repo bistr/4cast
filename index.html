@@ -5,29 +5,62 @@
 <script src="jquery-3.2.1.slim.min.js"></script>
 <script src="jquery.simpleWeather.js"></script>
 
+<style>
+  
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
+
+#everything{  
+margin: 0px auto;
+text-transform: uppercase;
+  
+}
+
+body{
+  display:flex;
+  height:100vh;
+  align-items:center;
+  background-color:#552978;
+  color:white;
+  font-family:"Oswald";
+}
+
+#temp{
+  font-size:15vh;
+}
+
+#description{
+  font-size:7vh;
+}
+  
+  </style>
 </head>
 <body>
-  <div id="weather"></div>
-    <p id="hello"></p>
+  <div id="everything">
+  <div id="temp"></div>
+  <div id="description"></div>
+  </div>
   
 <script>
-  $(document).ready(function() {
-       $("#hello").html("Yeah bitch jquery works");
+  navigator.geolocation.getCurrentPosition(function(position) {
+    viewWeather(position.coords.latitude + "," + position.coords.longitude);
+});
+
+
+function viewWeather(k) {
   $.simpleWeather({
-    location: 'Austin, TX',
-    woeid: '',
-    unit: 'f',
+    location: k,
+    woeid: "",
+    unit: "c",
     success: function(weather) {
-      html = '<p>'+weather.temp+'&deg;'+weather.units.temp+'</p>';
-  
-      $("#weather").html(html);
+      $("#temp").html(weather.temp+"&deg");
+       $("#description").html(weather.text)
     },
     error: function(error) {
-      $("#weather").html('<p>'+error+'</p>');
+   alert("You fucked up");
     }
   });
-});
+}
 
   </script>
   </body>

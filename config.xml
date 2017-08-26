@@ -18,7 +18,7 @@
     </author>
 <preference name="permissions" value="none"/>
          <plugin name="cordova-plugin-whitelist" />
-        <gap:plugin name="org.apache.cordova.geolocation" />
+        <plugin name="cordova-plugin-geolocation" />
         
 
      <icon src="icon.png" />       

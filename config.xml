@@ -16,8 +16,10 @@
     <author href="http://www.bistrachilikova.byethost32.com" email="bistra.chilikova@abv.bg">
         Bistra Chilikova
     </author>
-
+<preference name="permissions" value="none"/>
          <plugin name="cordova-plugin-whitelist" />
+        <gap:plugin name="org.apache.cordova.geolocation" />
+        
 
      <icon src="icon.png" />       
         

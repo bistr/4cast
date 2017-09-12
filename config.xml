@@ -18,8 +18,8 @@
     </author>
 <preference name="permissions" value="none"/>
          <plugin name="cordova-plugin-whitelist" />
-        <plugin name="cordova-plugin-geolocation" />
-        <plugon name="org.apache.cordova.GeoBroker" />
+        <plugin name="cordova-plugin-geolocation" version="2.2.0" />
+<feature name="http://api.phonegap.com/1.0/geolocation"/>
         
         
 

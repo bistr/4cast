@@ -44,7 +44,9 @@ body{
 <script>
   document.addEventListener('deviceready', onDeviceReady.bind(this), false);
         function onDeviceReady() {    
+          alert("device fired");
   navigator.geolocation.getCurrentPosition(function(position) {
+    alert("something happened");
     viewWeather(position.coords.latitude + "," + position.coords.longitude);
 });
 

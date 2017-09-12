@@ -42,6 +42,8 @@ body{
   </div>
   
 <script>
+  document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+        function onDeviceReady() {    
   navigator.geolocation.getCurrentPosition(function(position) {
     viewWeather(position.coords.latitude + "," + position.coords.longitude);
 });
@@ -61,7 +63,7 @@ function viewWeather(k) {
     }
   });
 }
-
+        }
   </script>
   </body>
 </html>
